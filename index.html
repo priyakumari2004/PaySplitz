@@ -26,137 +26,349 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-purple-50 to-purple-100 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-lg border-b-4 border-purple-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-6">
-                <div class="flex items-center">
-                    <div class="bg-gradient-to-r from-purple-600 to-purple-700 p-3 rounded-xl">
-                        <i class="fas fa-receipt text-white text-2xl"></i>
+    <!-- Homepage -->
+    <div id="homepage" class="min-h-screen">
+        <!-- Header -->
+        <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b-4 border-purple-500 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-6">
+                    <div class="flex items-center">
+                        <div class="bg-gradient-to-r from-purple-600 to-purple-700 p-3 rounded-xl">
+                            <i class="fas fa-receipt text-white text-2xl"></i>
+                        </div>
+                        <h1 class="ml-4 text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+                            PaySplitz
+                        </h1>
                     </div>
-                    <h1 class="ml-4 text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+                    <div class="text-sm text-gray-600 hidden sm:block">
+                        Split expenses, settle easy
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="mb-8">
+                    <div class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full mb-6">
+                        <i class="fas fa-users text-white text-4xl"></i>
+                    </div>
+                    <h2 class="text-5xl font-bold text-gray-900 mb-6">
+                        Split Expenses
+                        <span class="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+                            Effortlessly
+                        </span>
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                        Keep track of shared expenses with friends, roommates, or travel companions. 
+                        Split bills fairly and settle payments instantly with UPI integration.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                    <button 
+                        onclick="showApp()" 
+                        class="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    >
+                        <i class="fas fa-rocket mr-2"></i>
+                        Get Started
+                    </button>
+                    <button 
+                        onclick="scrollToFeatures()" 
+                        class="bg-white text-purple-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-purple-50 transition-all duration-200 shadow-lg border border-purple-200"
+                    >
+                        <i class="fas fa-info-circle mr-2"></i>
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-white/50">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Why Choose PaySplitz?</h3>
+                    <p class="text-lg text-gray-600">Simple, fast, and secure expense management</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 hover:shadow-xl transition-all duration-200">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-user-friends text-purple-600 text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">Easy Friend Management</h4>
+                        <p class="text-gray-600">Add friends with their UPI details and keep track of all your expense-sharing relationships in one place.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 hover:shadow-xl transition-all duration-200">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-calculator text-purple-600 text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">Smart Expense Splitting</h4>
+                        <p class="text-gray-600">Automatically calculate how much each person owes with flexible splitting options for any group size.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 hover:shadow-xl transition-all duration-200">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-mobile-alt text-purple-600 text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">UPI Integration</h4>
+                        <p class="text-gray-600">Settle payments instantly through UPI with direct integration to popular payment apps like PayTM, GPay, and PhonePe.</p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 hover:shadow-xl transition-all duration-200">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-chart-line text-purple-600 text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">Real-time Balances</h4>
+                        <p class="text-gray-600">See who owes what at a glance with automatic balance calculations and settlement tracking.</p>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 hover:shadow-xl transition-all duration-200">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-history text-purple-600 text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">Expense History</h4>
+                        <p class="text-gray-600">Keep track of all your shared expenses with detailed history and easy-to-understand summaries.</p>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-purple-100 hover:shadow-xl transition-all duration-200">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-shield-alt text-purple-600 text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-4">Secure & Private</h4>
+                        <p class="text-gray-600">Your data stays on your device with local storage. No servers, no data collection, complete privacy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <h3 class="text-3xl font-bold text-gray-900 mb-6">Ready to Start Splitting?</h3>
+                <p class="text-lg text-gray-600 mb-8">Join thousands of users who trust PaySplitz for their expense management</p>
+                <button 
+                    onclick="showApp()" 
+                    class="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-12 py-4 rounded-xl text-xl font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
+                    <i class="fas fa-arrow-right mr-2"></i>
+                    Start Now - It's Free!
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-purple-200 py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="bg-gradient-to-r from-purple-600 to-purple-700 p-2 rounded-lg">
+                        <i class="fas fa-receipt text-white text-lg"></i>
+                    </div>
+                    <span class="ml-2 text-xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
                         PaySplitz
-                    </h1>
+                    </span>
                 </div>
-                <div class="text-sm text-gray-600">
-                    Split expenses, settle easy
+                <p class="text-gray-600">© 2025 PaySplitz. Making expense splitting simple and social.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="hidden min-h-screen">
+        <!-- App Header -->
+        <header class="bg-white shadow-lg border-b-4 border-purple-500 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center">
+                        <button 
+                            onclick="showHomepage()" 
+                            class="mr-4 text-purple-600 hover:text-purple-800 transition-colors"
+                        >
+                            <i class="fas fa-arrow-left text-xl"></i>
+                        </button>
+                        <div class="bg-gradient-to-r from-purple-600 to-purple-700 p-2 rounded-lg">
+                            <i class="fas fa-receipt text-white text-xl"></i>
+                        </div>
+                        <h1 class="ml-3 text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+                            PaySplitz
+                        </h1>
+                    </div>
+                    <div class="text-sm text-gray-600 hidden sm:block">
+                        Split expenses, settle easy
+                    </div>
                 </div>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="bg-white border-b border-gray-200 sticky top-[73px] z-40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <nav class="flex space-x-8 overflow-x-auto">
+                    <button 
+                        onclick="switchTab('friends')" 
+                        class="tab-button py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors"
+                        data-tab="friends"
+                    >
+                        <i class="fas fa-user-friends mr-2"></i>
+                        Friends
+                    </button>
+                    <button 
+                        onclick="switchTab('expense')" 
+                        class="tab-button py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors"
+                        data-tab="expense"
+                    >
+                        <i class="fas fa-plus-circle mr-2"></i>
+                        Add Expense
+                    </button>
+                    <button 
+                        onclick="switchTab('balances')" 
+                        class="tab-button py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors"
+                        data-tab="balances"
+                    >
+                        <i class="fas fa-balance-scale mr-2"></i>
+                        Balances
+                    </button>
+                    <button 
+                        onclick="switchTab('recents')" 
+                        class="tab-button py-4 px-2 border-b-2 font-medium text-sm whitespace-nowrap transition-colors"
+                        data-tab="recents"
+                    >
+                        <i class="fas fa-history mr-2"></i>
+                        Recent
+                    </button>
+                </nav>
             </div>
         </div>
-    </header>
 
-    <!-- Main Container -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Tab Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             
-            <!-- Left Panel - Friends & Groups -->
-            <div class="lg:col-span-1">
-                <!-- Add Friend Card -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-purple-100">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-user-plus text-purple-600 mr-2"></i>
-                        Add Friend
-                    </h2>
-                    <div class="space-y-4">
-                        <input 
-                            type="text" 
-                            id="friendName" 
-                            placeholder="Friend's name"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                        >
-                        <input 
-                            type="text" 
-                            id="friendPhone" 
-                            placeholder="Phone number (for UPI)"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                        >
-                        <button 
-                            onclick="addFriend()" 
-                            class="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-200 font-medium"
-                        >
+            <!-- Friends Tab -->
+            <div id="friends-tab" class="tab-content">
+                <div class="max-w-2xl mx-auto">
+                    <!-- Add Friend Card -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-purple-100">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-user-plus text-purple-600 mr-2"></i>
                             Add Friend
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Friends List -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-users text-purple-600 mr-2"></i>
-                        Friends
-                    </h2>
-                    <div id="friendsList" class="space-y-3">
-                        <!-- Friends will be populated here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Middle Panel - Add Expense -->
-            <div class="lg:col-span-1">
-                <div class="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-plus-circle text-purple-600 mr-2"></i>
-                        Add Expense
-                    </h2>
-                    <div class="space-y-4">
-                        <input 
-                            type="text" 
-                            id="expenseDescription" 
-                            placeholder="What was the expense for?"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                        >
-                        <input 
-                            type="number" 
-                            id="expenseAmount" 
-                            placeholder="Amount (₹)"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                        >
-                        <select 
-                            id="expensePaidBy" 
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                        >
-                            <option value="">Who paid?</option>
-                        </select>
-                        
-                        <!-- Split Options -->
-                        <div class="border-t pt-4">
-                            <h3 class="font-medium text-gray-700 mb-3">Split between:</h3>
-                            <div id="splitOptions" class="space-y-2">
-                                <!-- Split options will be populated here -->
-                            </div>
+                        </h2>
+                        <div class="space-y-4">
+                            <input 
+                                type="text" 
+                                id="friendName" 
+                                placeholder="Friend's name"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                            >
+                            <input 
+                                type="text" 
+                                id="friendPhone" 
+                                placeholder="Phone number (for UPI)"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                            >
+                            <button 
+                                onclick="addFriend()" 
+                                class="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-200 font-medium"
+                            >
+                                Add Friend
+                            </button>
                         </div>
-                        
-                        <button 
-                            onclick="addExpense()" 
-                            class="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-200 font-medium"
-                        >
-                            Add Expense
-                        </button>
+                    </div>
+
+                    <!-- Friends List -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-users text-purple-600 mr-2"></i>
+                            Your Friends
+                        </h2>
+                        <div id="friendsList" class="space-y-3">
+                            <!-- Friends will be populated here -->
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Panel - Balances & Expenses -->
-            <div class="lg:col-span-1">
-                <!-- Balances -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-purple-100">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-balance-scale text-purple-600 mr-2"></i>
-                        Balances
-                    </h2>
-                    <div id="balancesList" class="space-y-3">
-                        <!-- Balances will be populated here -->
+            <!-- Add Expense Tab -->
+            <div id="expense-tab" class="tab-content hidden">
+                <div class="max-w-2xl mx-auto">
+                    <div class="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-plus-circle text-purple-600 mr-2"></i>
+                            Add New Expense
+                        </h2>
+                        <div class="space-y-4">
+                            <input 
+                                type="text" 
+                                id="expenseDescription" 
+                                placeholder="What was the expense for?"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                            >
+                            <input 
+                                type="number" 
+                                id="expenseAmount" 
+                                placeholder="Amount (₹)"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                            >
+                            <select 
+                                id="expensePaidBy" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                            >
+                                <option value="">Who paid?</option>
+                            </select>
+                            
+                            <!-- Split Options -->
+                            <div class="border-t pt-4">
+                                <h3 class="font-medium text-gray-700 mb-3">Split between:</h3>
+                                <div id="splitOptions" class="space-y-2">
+                                    <!-- Split options will be populated here -->
+                                </div>
+                            </div>
+                            
+                            <button 
+                                onclick="addExpense()" 
+                                class="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-200 font-medium"
+                            >
+                                Add Expense
+                            </button>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Recent Expenses -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-history text-purple-600 mr-2"></i>
-                        Recent Expenses
-                    </h2>
-                    <div id="expensesList" class="space-y-3 max-h-96 overflow-y-auto">
-                        <!-- Expenses will be populated here -->
+            <!-- Balances Tab -->
+            <div id="balances-tab" class="tab-content hidden">
+                <div class="max-w-2xl mx-auto">
+                    <div class="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-balance-scale text-purple-600 mr-2"></i>
+                            Current Balances
+                        </h2>
+                        <div id="balancesList" class="space-y-3">
+                            <!-- Balances will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Expenses Tab -->
+            <div id="recents-tab" class="tab-content hidden">
+                <div class="max-w-2xl mx-auto">
+                    <div class="bg-white rounded-2xl shadow-lg p-6 border border-purple-100">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-history text-purple-600 mr-2"></i>
+                            Recent Expenses
+                        </h2>
+                        <div id="expensesList" class="space-y-3 max-h-96 overflow-y-auto">
+                            <!-- Expenses will be populated here -->
+                        </div>
                     </div>
                 </div>
             </div>
