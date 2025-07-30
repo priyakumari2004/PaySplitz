@@ -1,12 +1,128 @@
 // PaySplitz - Main Application Logic
 
+// Authentication State
+let currentUser = null;
+
+// Check authentication on page load
+document.addEventListener('DOMContentLoaded', () => {
+    checkAuthState();
+});
+
+function checkAuthState() {
+    const user = localStorage.getItem('currentUser');
+    if (user) {
+        currentUser = JSON.parse(user);
+        updateUIForLoggedInUser();
+    }
+}
+
+function updateUIForLoggedInUser() {
+    if (currentUser) {
+        document.getElementById('userNameDisplay').textContent = currentUser.name;
+    }
+}
+
+// Authentication Functions
+function showAuthModal() {
+    document.getElementById('authModal').classList.remove('hidden');
+    document.getElementById('authModal').classList.add('flex');
+}
+
+function hideAuthModal() {
+    document.getElementById('authModal').classList.add('hidden');
+    document.getElementById('authModal').classList.remove('flex');
+}
+
+function showLogin() {
+    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('signupForm').classList.add('hidden');
+}
+
+function showSignup() {
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('signupForm').classList.remove('hidden');
+}
+
+function login() {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    if (!email || !password) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    // In production, this would be an API call
+    // For now, simulate login with localStorage
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find(u => u.email === email && u.password === password);
+    
+    if (user) {
+        currentUser = user;
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        updateUIForLoggedInUser();
+        hideAuthModal();
+        showApp();
+    } else {
+        alert('Invalid email or password');
+    }
+}
+
+function signup() {
+    const name = document.getElementById('signupName').value;
+    const email = document.getElementById('signupEmail').value;
+    const phone = document.getElementById('signupPhone').value;
+    const password = document.getElementById('signupPassword').value;
+    
+    if (!name || !email || !phone || !password) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    // In production, this would be an API call
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    
+    if (users.find(u => u.email === email)) {
+        alert('User already exists');
+        return;
+    }
+    
+    const newUser = {
+        id: Date.now(),
+        name,
+        email,
+        phone,
+        password, // In production, this should be hashed
+        createdAt: new Date().toISOString()
+    };
+    
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    
+    currentUser = newUser;
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+    updateUIForLoggedInUser();
+    hideAuthModal();
+    showApp();
+}
+
+function logout() {
+    currentUser = null;
+    localStorage.removeItem('currentUser');
+    showHomepage();
+}
+
 // Navigation Functions
 function showApp() {
+    if (!currentUser) {
+        showAuthModal();
+        return;
+    }
     document.getElementById('homepage').classList.add('hidden');
     document.getElementById('mainApp').classList.remove('hidden');
     // Initialize app if not already done
     if (!window.app) {
-        app = new PaySplitz();
+        app = new PaySplitz(currentUser);
     }
     // Default to friends tab
     switchTab('friends');
@@ -45,9 +161,10 @@ function switchTab(tabName) {
 }
 
 class PaySplitz {
-    constructor() {
-        this.friends = JSON.parse(localStorage.getItem('friends')) || [];
-        this.expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+    constructor(user) {
+        this.user = user;
+        this.friends = JSON.parse(localStorage.getItem(`friends_${user.id}`)) || [];
+        this.expenses = JSON.parse(localStorage.getItem(`expenses_${user.id}`)) || [];
         this.init();
     }
 
@@ -398,11 +515,11 @@ class PaySplitz {
 
     // Utility Methods
     saveFriends() {
-        localStorage.setItem('friends', JSON.stringify(this.friends));
+        localStorage.setItem(`friends_${this.user.id}`, JSON.stringify(this.friends));
     }
 
     saveExpenses() {
-        localStorage.setItem('expenses', JSON.stringify(this.expenses));
+        localStorage.setItem(`expenses_${this.user.id}`, JSON.stringify(this.expenses));
     }
 
     showToast(message, type = 'success') {
